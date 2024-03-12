@@ -85,9 +85,52 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 <head>
     <meta charset="UTF-8">
     <title>Kasir Program</title>
+    <style>
+        * {
+            font-family: Arial, Helvetica, sans-serif !important;
+
+        }
+
+        nav {
+            background: black;
+            margin-bottom: 15px;
+            padding: 10px;
+            padding-bottom: 28px;
+            padding-left: 15px;
+            font-size: larger;
+        }
+
+        nav a {
+            padding: 5px;
+            font-weight: bold;
+            font-size: larger;
+        }
+
+        a {
+            text-decoration: none;
+            color: white;
+        }
+
+        footer {
+            background: black;
+            color: white;
+            margin-bottom: 15px;
+            padding: 10px;
+            padding-bottom: 20px;
+            padding-left: 15px;
+            font-size: large;
+            bottom: 0;
+            width: 100%;
+            position: absolute;
+        }
+    </style>
+
 </head>
 
 <body>
+    <?php
+    include("header.php");
+    ?>
     <h1>Kasir Program</h1>
     <form method="post">
         <label for="customer">Customer:</label>
@@ -95,8 +138,10 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
             <?php displayOptions($customers); ?>
         </select><br><br>
 
-        <?php for ($i = 1; $i <= 3; $i++) : ?>
-            <label for="product<?= $i ?>">Product <?= $i ?>:</label>
+        <?php for ($i = 1; $i <= 3; $i++): ?>
+            <label for="product<?= $i ?>">Product
+                <?= $i ?>:
+            </label>
             <select name="product<?= $i ?>">
                 <option value="">- Pilih Produk -</option>
                 <?php displayOptions(array_keys($products)); ?>
@@ -116,6 +161,9 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 
         <input type="submit" value="Submit">
     </form>
+    <?php
+    include("footer.php");
+    ?>
 </body>
 
 </html>
